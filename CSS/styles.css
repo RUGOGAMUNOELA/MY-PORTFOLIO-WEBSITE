@@ -9,7 +9,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: url('img/wallpaper.jpg') no-repeat center center fixed;
+  background: url('/MY-PORTFOLIO-WEBSITE/img/wallpaper.jpg') no-repeat center center fixed;
   background-size: cover;
   color: #fff;
   /* Tweak for cooler effect - slightly darker overlay and subtle blur */
