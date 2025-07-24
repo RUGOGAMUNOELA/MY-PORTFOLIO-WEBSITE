@@ -9,6 +9,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
+  /* Corrected path for GitHub Pages deployment */
   background: url('img/wallpaper.jpg') no-repeat center center fixed;
   background-size: cover;
   color: #fff;
@@ -152,10 +153,12 @@ footer {
   min-height: 1.5rem; /* Ensure space for text */
   border-right: 2px solid #ff69b4; /* Typing cursor effect */
   animation: blink-caret 0.75s step-end infinite;
-  white-space: nowrap; /* Prevent text wrapping */
+  white-space: nowrap; /* Prevent text wrapping on larger screens */
   overflow: hidden; /* Hide overflow until typed */
   display: inline-block; /* Essential for animation */
   color: #ff69b4;
+  /* Ensure it doesn't cause horizontal scroll on larger screens if very long */
+  max-width: 100%;
 }
 
 @keyframes blink-caret {
@@ -166,16 +169,27 @@ footer {
 /* For contact page icons */
 .contact-info p {
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Align items to start so text can wrap below icon */
   margin-bottom: 1rem;
   font-size: 1.1rem;
+  flex-wrap: wrap; /* Allow content to wrap */
 }
 
 .contact-info p i {
   margin-right: 0.8rem;
   color: #ff69b4;
   font-size: 1.5rem;
+  flex-shrink: 0; /* Prevent icon from shrinking */
 }
+
+.contact-info p a {
+  /* Ensure links break words if they are too long */
+  word-break: break-all; /* Breaks words at any character to fit */
+  overflow-wrap: break-word; /* Recommended modern property */
+  display: inline; /* Keep it inline with text */
+  margin-top: 0; /* Remove extra margin from general .card a rule */
+}
+
 
 /* Form Styles */
 form {
@@ -277,4 +291,29 @@ form button:hover {
   .card {
     margin: 0.8rem 0;
   }
+
+  /* --- Mobile-specific fixes --- */
+
+  /* Typing Text on small screens */
+  .typing-text {
+    white-space: normal; /* Allow text to wrap */
+    font-size: 1.2rem; /* Reduce font size for better fit */
+    line-height: 1.4; /* Improve readability when wrapped */
+    min-height: auto; /* Allow height to adjust */
+  }
+
+  /* Contact Info on small screens */
+  .contact-info p {
+    font-size: 1rem; /* Slightly smaller font for contact info */
+  }
+
+  .contact-info p i {
+    font-size: 1.3rem; /* Slightly smaller icon */
+  }
+
+  .contact-info p a {
+    /* Ensure the link text itself wraps within the available space */
+    word-break: break-word; /* Breaks long words to prevent overflow */
+  }
 }
+
